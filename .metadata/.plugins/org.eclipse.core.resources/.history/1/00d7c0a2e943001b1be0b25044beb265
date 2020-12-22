@@ -1,0 +1,33 @@
+package br.com.utilidades;
+
+import org.primefaces.model.UploadedFile;
+
+public class UploadBasicoBean {
+	private UploadedFile uploadedFile;
+
+	public UploadedFile getUploadedFile() {
+		return uploadedFile;
+	}
+
+	public void setUploadedFile(UploadedFile uploadedFile) {
+		this.uploadedFile = uploadedFile;
+	}
+
+	public void upload() {
+		try {
+			File file = new File(diretorioRaiz(), uploadedFile.getFileName());
+
+			OutputStream out = new FileOutputStream(file);
+			out.write(uploadedFile.getContents());
+			out.close();
+
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage("Upload completo", "O arquivo " + uploadedFile.getFileName() + " foi salvo!"));
+		} catch (IOException e) {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage(FacesMessage.SEVERITY_WARN, "Erro", e.getMessage()));
+		}
+
+	}
+
+}

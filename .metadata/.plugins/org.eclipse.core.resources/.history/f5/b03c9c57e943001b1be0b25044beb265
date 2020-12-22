@@ -1,0 +1,9 @@
+package br.com.utilidades;
+
+import org.primefaces.model.UploadedFile;
+
+public class UploadBasicoBean {
+	private UploadedFile uploadedFile;
+	 
+	  // getters e setters omitidos
+}

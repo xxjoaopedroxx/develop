@@ -1,0 +1,7 @@
+package br.com.utilidades;
+
+public class UploadBasicoBean {
+	private UploadedFile uploadedFile;
+	 
+	  // getters e setters omitidos
+}

@@ -1,0 +1,17 @@
+package br.com.utilidades;
+
+import org.primefaces.model.UploadedFile;
+
+public class UploadBasicoBean {
+	private UploadedFile uploadedFile;
+
+	public UploadedFile getUploadedFile() {
+		return uploadedFile;
+	}
+
+	public void setUploadedFile(UploadedFile uploadedFile) {
+		this.uploadedFile = uploadedFile;
+	}
+	 
+	  
+}
