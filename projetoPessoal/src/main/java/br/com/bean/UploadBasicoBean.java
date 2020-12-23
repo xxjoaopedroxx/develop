@@ -15,6 +15,7 @@ import org.primefaces.model.UploadedFile;
  * 
  * @author jpalm
  * Classe upload bean para primefaces
+ * teste
  */
 @ManagedBean(name = "uploadBean")
 public class UploadBasicoBean {
