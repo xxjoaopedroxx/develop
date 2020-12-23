@@ -11,6 +11,7 @@ import javax.faces.context.FacesContext;
 
 import org.primefaces.model.UploadedFile;
 
+// classe de upload
 @ManagedBean(name = "uploadBean")
 public class UploadBasicoBean {
 	private UploadedFile uploadedFile;
