@@ -4,7 +4,17 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
+	<script type="text/javascript">
+		//<![CDATA[
+		function start() {
+			PF('statusDialog').show();
+		}
 
+		function stop() {
+			PF('statusDialog').hide();
+		}
+		//]]>
+	</script>
 </h:head>
 
 <h:body>
@@ -12,10 +22,22 @@
 	<p:outputLabel value="Olá Prime Faces" />
 
 	<h:form enctype="multipart/form-data">
-		<p:fileUpload value="#{uploadBean.uploadedFile}" mode="simple" skinSimple="true"/>
+		<p:fileUpload value="#{uploadBean.uploadedFile}" mode="simple"
+			skinSimple="true" />
 		<br></br>
 		<p:commandButton value="Enviar" ajax="false"
 			actionListener="#{uploadBean.upload}" />
+	</h:form>
+	<p:dialog modal="true" widgetVar="statusDialog" header="Status"
+		draggable="false" closable="false" resizable="false">
+		<p:graphicImage name="/demo/images/ajaxloadingbar.gif" />
+	</p:dialog>
+	<h:form>
+		<p:commandButton value="Baixar" ajax="false"
+			onclick="PrimeFaces.monitorDownload(start, stop);"
+			icon="pi pi-arrow-down">
+			<p:fileDownload value="#{downloadBean.file}" />
+		</p:commandButton>
 	</h:form>
 
 </h:body>

@@ -10,7 +10,7 @@ public class WriteExcelController {
 		LinhasExcel excel = new LinhasExcel();
 
 		List<LinhasExcel> linhas = excel.getLinhasExcels();
-		String path = "src/main/java/arquivos/testeEscritaExcel.xlsx";
+		String path = "src/main/java/br/com/bean/testeEscritaExcel.xls";
 
 		excel.writeExcel(linhas, path);
 		
