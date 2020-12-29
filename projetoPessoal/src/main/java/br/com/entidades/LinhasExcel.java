@@ -1,6 +1,5 @@
 package br.com.entidades;
 
-import java.awt.print.Book;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
