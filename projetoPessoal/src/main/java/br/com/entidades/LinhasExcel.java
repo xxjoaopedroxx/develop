@@ -1,6 +1,5 @@
 package br.com.entidades;
 
-import java.awt.print.Book;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
@@ -12,6 +11,11 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 
+import com.aspose.cells.FileFormatType;
+import com.aspose.cells.LoadOptions;
+import com.aspose.cells.SaveFormat;
+
+// comentario
 public class LinhasExcel {
 	private String nomeAluno;
 	private int idade;
@@ -105,6 +109,13 @@ public class LinhasExcel {
 		try (FileOutputStream outputStream = new FileOutputStream(excelFilePath)) {
 			workbook.write(outputStream);
 		}
+	}
+	
+	// CSV to XLS converter
+	public void writeExcelFromCSV(String csv) throws Exception {
+		LoadOptions lp = new LoadOptions(FileFormatType.CSV);
+		com.aspose.cells.Workbook wb = new com.aspose.cells.Workbook(csv, lp);
+		wb.save("C:/Users/jpalm/Desktop/exemploExcel.xlsx", SaveFormat.XLSX);
 	}
 
 }
