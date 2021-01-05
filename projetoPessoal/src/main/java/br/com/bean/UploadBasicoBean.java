@@ -11,11 +11,6 @@ import javax.faces.context.FacesContext;
 
 import org.primefaces.model.UploadedFile;
 
-/**
- * 
- * @author jpalm
- * Classe upload bean para primefaces
- */
 @ManagedBean(name = "uploadBean")
 public class UploadBasicoBean {
 	private UploadedFile uploadedFile;
