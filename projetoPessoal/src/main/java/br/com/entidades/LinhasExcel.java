@@ -22,14 +22,14 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 // comentario
 public class LinhasExcel {
 	private String nomeAluno;
-	private int idade;
+	private String idade;
 	private String curso;
 
 	public LinhasExcel() {
 
 	}
 
-	public LinhasExcel(String nomeAluno, int idade, String curso) {
+	public LinhasExcel(String nomeAluno, String idade, String curso) {
 		super();
 		this.nomeAluno = nomeAluno;
 		this.idade = idade;
@@ -44,11 +44,11 @@ public class LinhasExcel {
 		this.nomeAluno = nomeAluno;
 	}
 
-	public int getIdade() {
+	public String getIdade() {
 		return idade;
 	}
 
-	public void setIdade(int idade) {
+	public void setIdade(String idade) {
 		this.idade = idade;
 	}
 
@@ -67,10 +67,10 @@ public class LinhasExcel {
 	 */
 	public List<LinhasExcel> getLinhasExcels() {
 
-		LinhasExcel linha1 = new LinhasExcel("João Pedro Faria de Almeida", 20, "Sistemas de Informação");
-		LinhasExcel linha2 = new LinhasExcel("Jordy Allan", 25, "Sistemas de Informação");
-		LinhasExcel linha3 = new LinhasExcel("Junia Aguilar", 20, "Arquitetura e Urbanismo");
-		LinhasExcel linha4 = new LinhasExcel("Lucas Magnago", 20, "Engenharia Mecânica");
+		LinhasExcel linha1 = new LinhasExcel("João Pedro Faria de Almeida", "20", "Sistemas de Informação");
+		LinhasExcel linha2 = new LinhasExcel("Jordy Allan", "25", "Sistemas de Informação");
+		LinhasExcel linha3 = new LinhasExcel("Junia Aguilar", "20", "Arquitetura e Urbanismo");
+		LinhasExcel linha4 = new LinhasExcel("Lucas Magnago", "20", "Engenharia Mecânica");
 
 		List<LinhasExcel> listaLinhas = Arrays.asList(linha1, linha2, linha3, linha4);
 
