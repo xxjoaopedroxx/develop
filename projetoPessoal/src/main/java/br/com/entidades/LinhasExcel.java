@@ -5,15 +5,19 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
+import org.apache.poi.hssf.usermodel.HSSFCell;
+import org.apache.poi.hssf.usermodel.HSSFDataFormat;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
-
-import com.aspose.cells.FileFormatType;
-import com.aspose.cells.LoadOptions;
-import com.aspose.cells.SaveFormat;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFCellStyle;
+import org.apache.poi.xssf.usermodel.XSSFDataFormat;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 // comentario
 public class LinhasExcel {
@@ -78,15 +82,21 @@ public class LinhasExcel {
 	 * @param conteudo
 	 * @param row
 	 */
-	private void writeBook(LinhasExcel conteudo, Row row) {
-		Cell cell = row.createCell(1);
+	private void writeBook(LinhasExcel conteudo, XSSFRow row, XSSFWorkbook wb) {
+		
+		XSSFCellStyle style = wb.createCellStyle();
+		style.setDataFormat(HSSFDataFormat.getBuiltinFormat("0.00"));
+		
+		XSSFCell cell = row.createCell(1);		
 		cell.setCellValue(conteudo.getNomeAluno());
 
 		cell = row.createCell(2);
 		cell.setCellValue(conteudo.getIdade());
-
+		cell.setCellStyle(style);
+		
 		cell = row.createCell(3);
 		cell.setCellValue(conteudo.getCurso());
+		
 	}
 
 	/**
@@ -96,14 +106,15 @@ public class LinhasExcel {
 	 * @throws IOException
 	 */
 	public void writeExcel(List<LinhasExcel> listaLinhas, String excelFilePath) throws IOException {
-		Workbook workbook = new HSSFWorkbook();
-		Sheet sheet = workbook.createSheet();
+		XSSFWorkbook workbook = new XSSFWorkbook();
+		
+		XSSFSheet sheet = workbook.createSheet();
 
 		int rowCount = 0;
 
 		for (LinhasExcel linha : listaLinhas) {
-			Row row = sheet.createRow(++rowCount);
-			writeBook(linha, row);
+			XSSFRow row = sheet.createRow(++rowCount);
+			writeBook(linha, row, workbook);
 		}
 
 		try (FileOutputStream outputStream = new FileOutputStream(excelFilePath)) {
@@ -112,10 +123,10 @@ public class LinhasExcel {
 	}
 	
 	// CSV to XLS converter
-	public void writeExcelFromCSV(String csv) throws Exception {
-		LoadOptions lp = new LoadOptions(FileFormatType.CSV);
-		com.aspose.cells.Workbook wb = new com.aspose.cells.Workbook(csv, lp);
-		wb.save("C:/Users/jpalm/Desktop/exemploExcel.xlsx", SaveFormat.XLSX);
-	}
+//	public void writeExcelFromCSV(String csv) throws Exception {
+//		LoadOptions lp = new LoadOptions(FileFormatType.CSV);
+//		com.aspose.cells.Workbook wb = new com.aspose.cells.Workbook(csv, lp);
+//		wb.save("C:/Users/jpalm/Desktop/exemploExcel.xlsx", SaveFormat.XLSX);
+//	}
 
 }

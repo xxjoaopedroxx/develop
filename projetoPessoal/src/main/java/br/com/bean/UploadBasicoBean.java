@@ -22,7 +22,11 @@ public class UploadBasicoBean {
 	public void setUploadedFile(UploadedFile uploadedFile) {
 		this.uploadedFile = uploadedFile;
 	}
-
+	
+	/**
+	 * @author jpalm
+	 * realiza o upload do arquivo excel
+	 */
 	public void upload() {
 		try {
 			File file = new File(uploadedFile.getFileName());
