@@ -11,10 +11,10 @@ public class WriteExcelController {
 		List<LinhasExcel> linhas = excel.getLinhasExcels();
 		String path = "C:/Users/jpalm/Desktop/exemploCSV.csv";
 
-		//excel.writeExcel(linhas, path);
+		excel.writeExcel(linhas, path);
 		
 		// salva o arquivo convertido do CSV para excel
-		excel.writeExcelFromCSV(path);
+//		excel.writeExcelFromCSV(path);
 		
 	}
 }
